@@ -1,0 +1,23 @@
+# Usuarios y Roles
+php artisan make:model Usuarios -c :white_check_mark:
+php artisan make:model Rol -c :white_check_mark:
+
+# Catálogo Alimentos
+php artisan make:model CategoriaAlimento -c :white_check_mark:
+php artisan make:model Alimento -c :white_check_mark:
+php artisan make:model Supermercado -c :white_check_mark:
+php artisan make:model Marca -c :white_check_mark:
+php artisan make:model AlimentoPrecio -c :white_check_mark:
+
+# Recetas
+php artisan make:model Receta -c :white_check_mark:
+php artisan make:model IngredienteReceta -c :white_check_mark:
+php artisan make:model Etiqueta -c :white_check_mark:
+
+# Planificación y Compras
+php artisan make:model Plan -c :white_check_mark:
+php artisan make:model PlanItem -c :white_check_mark:
+php artisan make:model Compra -c :white_check_mark:
+php artisan make:model ListaCompra -c :white_check_mark:
+php artisan make:model ItemListaCompra -c :white_check_mark:
+php artisan make:model Imagen
