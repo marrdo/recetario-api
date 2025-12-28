@@ -1,66 +1,126 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Recetario API
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+API REST desarrollada con **Laravel 12**, orientada a la gestión de recetas, alimentos y planificación nutricional.
 
-## About Laravel
+El proyecto sigue un enfoque **API-first**, preparado para ser consumido por cualquier frontend (web o móvil) y con control de acceso avanzado mediante autenticación y roles.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+---
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Características principales
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+- Autenticación segura mediante **Laravel Sanctum**
+- Control de acceso por **roles y habilidades (abilities)**
+- Separación entre:
+  - Parte pública (consulta de recetas)
+  - Panel privado (gestión interna)
+- Gestión de:
+  - Usuarios
+  - Roles
+  - Alimentos
+  - Recetas
+  - Planificación nutricional
+- Código mantenible, escalable y orientado a buenas prácticas
 
-## Learning Laravel
+---
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## Tecnologías utilizadas
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+- **PHP 8.3**
+- **Laravel 12**
+- **Laravel Sanctum**
+- **MySQL / MariaDB**
+- **Composer**
+- **Git & GitHub**
 
-You can also watch bite-sized lessons with real-world projects on [Laravel Learn](https://laravel.com/learn), where you will be guided through building a Laravel application from scratch while learning PHP fundamentals.
+---
 
-## Laravel Sponsors
+## Autenticación y seguridad
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+La API utiliza **Laravel Sanctum** para la autenticación mediante tokens personales.
 
-### Premium Partners
+- Protección de rutas con middleware `auth:sanctum`
+- Control granular de permisos mediante `abilities`
+- Preparada para múltiples roles con distintos niveles de acceso
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+Ejemplo de uso de rutas protegidas:
 
-## Contributing
+```php
+Route::middleware('auth:sanctum')->group(function () {
+    Route::post('/logout', [AuthController::class, 'logout']);
+});
+```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+---
 
-## Code of Conduct
+## Roles previstos
+El sistema contempla los siguientes roles iniciales:
+- Admin
+- Nutricionista
+- Entrenador
+- Cliente
+Cada rol tendrá asociadas habilidades específicas para limitar el acceso a los distintos recursos de la API.
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+---
 
-## Security Vulnerabilities
+## Instalación y configuración
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+- Clonar el repositorio
+```bash
+git clone https://github.com/tuusuario/recetario-api.git
+cd recetario-api
+```
+- Instalar dependencias
+```bash
+composer install
+```
+- Configurar entorno
+```bash
+cp .env.example .env
+php artisan key:generate
+```
+Configura los datos de conexión a la base de datos en el archivo .env.
 
-## License
+- Ejecutar migraciones
+```bash
+php artisan migrate
+```
+- Arranque del servidor de desarrollo
+```bash
+php artisan serve
+```
+La API estará disponible en:
+```bash
+http://localhost:8000/api
+```
+---
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+## Estado del proyecto
+
+🟡 En desarrollo activo
+
+- Autenticación base implementada
+- Estructura inicial de roles y permisos
+- CRUDs en desarrollo
+- Planificación nutricional en diseño
+
+---
+
+## Roadmap
+- CRUD completo de alimentos
+- CRUD de recetas
+- Planificación nutricional
+- Sistema avanzado de roles y abilities
+- Documentación de la API (Swagger / OpenAPI)
+
+---
+
+## Autor
+**Manuel Maldonado**
+Proyecto de práctica y aprendizaje avanzado en desarrollo de APIs con Laravel.
+
+---
+
+## Licencia
+Este proyecto se distribuye bajo licencia MIT.
+
+--- 

@@ -23,12 +23,18 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::middleware('abilities:manejo-alimentos')->group(function () {
 
         Route::apiResource('alimentos', AlimentoController::class);
+        Route::patch('/alimentos/{alimento}/restore', [AlimentoController::class, 'restore']);
 
     });
 
+    // Podriamos darle permisos de usar unas funciones u otras por token o rol agregando las ruta individualmente de esta forma
+    // Route::apiResource('alimentos', AlimentoController::class)
+    // ->only(['index', 'store', 'show', 'update', 'destroy']);
+
+
     // Ejemplo de ruta para ver al usuario logeado(ejemplo)
     Route::get('/me', function (Request $request) {
-        return $request->user()->load('roles'); /*Este load que carajo hace?*/
+        return $request->user()->load('roles');
     });
 
     // Probando la entrada a la ruta segun las abilities del TOKEN.

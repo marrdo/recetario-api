@@ -40,7 +40,6 @@ class Alimento extends Model
             'calorias_por_base' => 'decimal:2',
             'proteinas_por_base' => 'decimal:2',
             'grasas_por_base' => 'decimal:2',
-            'grasas_por_base' => 'decimal:2',
             'carbohidratos_por_base' => 'decimal:2',
         ];
     }
