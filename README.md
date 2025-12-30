@@ -53,11 +53,13 @@ Route::middleware('auth:sanctum')->group(function () {
 ---
 
 ## Roles previstos
+
 El sistema contempla los siguientes roles iniciales:
 - Admin
 - Nutricionista
 - Entrenador
 - Cliente
+
 Cada rol tendrá asociadas habilidades específicas para limitar el acceso a los distintos recursos de la API.
 
 ---
@@ -116,11 +118,13 @@ http://localhost:8000/api
 
 ## Autor
 **Manuel Maldonado**
+
 Proyecto de práctica y aprendizaje avanzado en desarrollo de APIs con Laravel.
 
 ---
 
 ## Licencia
+
 Este proyecto se distribuye bajo licencia MIT.
 
 --- 
