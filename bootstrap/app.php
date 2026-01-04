@@ -26,7 +26,6 @@ return Application::configure(basePath: dirname(__DIR__))
             \Illuminate\Auth\AuthenticationException $e,
             \Illuminate\Http\Request $request
         ) {
-            dd($request);
             if ($request->expectsJson()) {
                 return response()->json([
                     'message' => 'No autenticado'
