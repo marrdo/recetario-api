@@ -43,3 +43,5 @@ Route::middleware('auth:sanctum')->group(function () {
     });
 
 });
+
+Route::get('/ping', fn() => 'ok, entra');

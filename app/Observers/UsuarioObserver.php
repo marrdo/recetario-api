@@ -13,7 +13,7 @@ class UsuarioObserver
      * Handle the Usuario "created" event.
      * Se ejecuta antes de que el usuario se guarde (por primera vez) cuando el usuario se CREA
      */
-    public function created(Usuario $Usuario): void
+    public function created(Usuario $usuario): void
     {
         // Si se crea desde consola (seeders, migrate, tinker), no hacemos nada
         if (App::runningInConsole()) {
@@ -34,20 +34,9 @@ class UsuarioObserver
      * Handle the Usuario "updated" event.
      * Se ejecuta cuando el usuario se ACTUALIZA
      */
-    public function updated(Usuario $usuarios): void
+    public function updated(Usuario $usuario): void
     {
-        // Si se crea desde consola (seeders, migrate, tinker), no hacemos nada
-        if (App::runningInConsole()) {
-            return;
-        }
-
-         // Evitamos bucle infinito
-        if (! empty($usuario->usuario_ip)) {
-            return;
-        }
-
-        $usuario->usuario_ip = request()->ip() ?? '127.0.0.1';
-        $usuario->saveQuietly();
+        // 
     }
 
     /**
